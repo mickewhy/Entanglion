@@ -30,6 +30,330 @@ public class Entanglion extends JPanel {
 	static ArrayList<String> player0EngineCards = new ArrayList<String>();
 	static ArrayList<String> player1EngineCards = new ArrayList<String>();
 
+	// MINA
+	static String user0Planet;
+	static String user1Planet;
+
+	public void useXCard(int user) {
+		String user0Planet = "";
+		if (user == 0) {
+			switch (user0Planet) {
+				case ("omegaZero"):
+					user0Planet = "omegaTwo";
+					break;
+				case ("omegaOne"):
+					user0Planet = "omegaThree";
+					break;
+				case ("omegaTwo"):
+					user0Planet = "omegaZero";
+					break;
+				case ("omegaThree"):
+					user0Planet = "omegaOne";
+					break;
+				case ("psiPlus"):
+					user0Planet = "phiPlus";
+					break;
+				case ("psiMinus"):
+					user0Planet = "phiMinus";
+					break;
+				case ("phiPlus"):
+					user0Planet = "psiPlus";
+					break;
+				case ("phiMinus"):
+					user0Planet = "psiMinus";
+					break;
+				case ("one"):
+					user0Planet = "zero";
+					break;
+				case ("zero"):
+					user0Planet = "one";
+					break;
+			}
+		} else {
+			switch (user1Planet) {
+				case ("omegaZero"):
+					user1Planet = "omegaOne";
+					break;
+				case ("omegaOne"):
+					user1Planet = "omegaZero";
+					break;
+				case ("omegaTwo"):
+					user1Planet = "omegaThree";
+					break;
+				case ("omegaThree"):
+					user1Planet = "omegaTwo";
+					break;
+				case ("psiPlus"):
+					user1Planet = "phiPlus";
+					break;
+				case ("psiMinus"):
+					user1Planet = "phiMinus";
+					break;
+				case ("phiPlus"):
+					user1Planet = "psiPlus";
+					break;
+				case ("phiMinus"):
+					user1Planet = "psiMinu";
+					break;
+				case ("one"):
+					user1Planet = "zero";
+					break;
+				case ("zero"):
+					user1Planet = "one";
+					break;
+			}
+		}
+
+	}
+
+	public void useHCard(int user) {
+		String user0Planet = "";
+		if (user == 0) {
+			switch (user0Planet) {
+				case ("omegaZero"):
+					user0Planet = "phiMinus";
+					break;
+				case ("omegaOne"):
+					user0Planet = "psiMinus";
+					break;
+				case ("omegaTwo"):
+					user0Planet = "phiPlus";
+					break;
+				case ("omegaThree"):
+					user0Planet = "psiPlus";
+					break;
+				case ("psiPlus"):
+					user0Planet = "omegaThree";
+					break;
+				case ("psiMinus"):
+					user0Planet = "omegaOne";
+					break;
+				case ("phiPlus"):
+					user0Planet = "omegaTwo";
+					break;
+				case ("phiMinus"):
+					user0Planet = "omegaZero";
+					break;
+				case ("one"):
+					user0Planet = "minus";
+					break;
+				case ("zero"):
+					user0Planet = "plus";
+					break;
+				case ("plus"):
+					user0Planet = "zero";
+					break;
+				case ("minus"):
+					user0Planet = "one";
+					break;
+			}
+		} else {
+			switch (user1Planet) {
+				case ("omegaZero"):
+					user1Planet = "psiPlus";
+					break;
+				case ("omegaOne"):
+					user1Planet = "psiMinus";
+					break;
+				case ("omegaTwo"):
+					user1Planet = "phiPlus";
+					break;
+				case ("omegaThree"):
+					user1Planet = "phiMinus";
+					break;
+				case ("psiPlus"):
+					user1Planet = "omegaZero";
+					break;
+				case ("psiMinus"):
+					user1Planet = "omegaOne";
+					break;
+				case ("phiPlus"):
+					user1Planet = "omegaTwo";
+					break;
+				case ("phiMinus"):
+					user1Planet = "omegaThree";
+					break;
+				case ("one"):
+					user1Planet = "minus";
+					break;
+				case ("zero"):
+					user1Planet = "plus";
+					break;
+				case ("minus"):
+					user1Planet = "one";
+					break;
+				case ("plus"):
+					user1Planet = "zero";
+					break;
+			}
+		}
+
+	}
+
+	public void useCNOTCard(int user) {
+		String user0Planet = "";
+		if (user == 0) {
+			switch (user0Planet) {
+				case ("omegaZero"):
+					user0Planet = "omegaTwo";
+					break;
+				case ("omegaTwo"):
+					user0Planet = "omegaZero";
+					break;
+				case ("one"):
+					user0Planet = "zero";
+					break;
+				case ("zero"):
+					user0Planet = "one";
+					break;
+			}
+		} else {
+			switch (user1Planet) {
+				case ("omegaTwo"):
+					user1Planet = "omegaThree";
+					break;
+				case ("omegaThree"):
+					user1Planet = "omegaTwo";
+					break;
+				case ("one"):
+					user1Planet = "zero";
+					break;
+				case ("zero"):
+					user1Planet = "one";
+					break;
+			}
+		}
+
+	}
+
+	public static void swap() {
+		if (!user0Planet.equals("omegaThree") && !user0Planet.equals("omegaZero")) {
+			return;
+		}
+		if (!user1Planet.equals("omegaThree") && !user1Planet.equals("omegaZero")) {
+			return;
+		}
+		String temp = user0Planet;
+		user0Planet = user1Planet;
+		user1Planet = temp;
+	}
+
+	public void cnotWithButton(int user) {
+
+		String planet0 = "";
+		String planet1 = "";
+
+		if (user == 0) {
+			planet0 = user0Planet;
+			planet1 = user1Planet;
+		} else {
+			planet0 = user1Planet;
+			planet1 = user0Planet;
+		}
+
+		if (!(planet0.equals("zero") || planet0.equals("one"))) {
+			return;
+		}
+
+		if (planet0.equals("zero")) {
+			if (planet1.equals("plus")) {
+				user0Planet = "phiPlus";
+				user1Planet = "phiPlus";
+			} else if (planet1.equals("minus")) {
+				user0Planet = "phiMinus";
+				user1Planet = "phiMinus";
+			} else {
+				return;
+			}
+		}
+
+		else {
+			if (planet1.equals("plus")) {
+				user0Planet = "psiPlus";
+				user1Planet = "psiPlus";
+			} else if (planet1.equals("minus")) {
+				user0Planet = "psiMinus";
+				user1Planet = "psiMinus";
+			} else {
+				return;
+			}
+		}
+	}
+
+	static boolean[] player1Components = new boolean[8];
+	static boolean[] player2Components = new boolean[8];
+
+	public static void addComponent(int player, int component) {
+		if (player == 0) {
+			player1Components[component] = true;
+		} else {
+			player2Components[component] = true;
+		}
+	}
+	//
+
+	// MAHMOUD
+	static ArrayList<String> player1cards = new ArrayList<String>();
+	static ArrayList<String> player2cards = new ArrayList<String>();
+
+	public static void eventCardsFunctionality(Graphics g) {
+		if (placedDeck.size() > 0) {
+			switch (placedDeck.get(placedDeck.size() - 1)) {
+				case "./Assets/Cards/Schrodinger.png":
+					if (detectionRate < 10)
+						detectionRate++;
+					else {
+						//
+					}
+					break;
+
+				case "./Assets/Cards/WaveFunctionCollapse.png":
+					if (detectionRate <= 2)
+						detectionRate = 0;
+					else
+						detectionRate -= 2;
+					break;
+
+				case "./Assets/Cards/BitFlipError.png":
+					detectionRate = 5;
+					break;
+
+				case "./Assets/Cards/QuantumShuffle.png":
+					quantumEventsDeck.addAll(placedDeck);
+					placedDeck.clear();
+					///////// CLEAR ON HAND CARDS
+					if (!player1cards.isEmpty()) {
+						quantumEventsDeck.addAll(player1cards);
+						player1cards.clear();
+					}
+					if (!player2cards.isEmpty()) {
+						quantumEventsDeck.addAll(player2cards);
+						player2cards.clear();
+					}
+					quantumEventsDeck = shuffleCards(quantumEventsDeck);
+					// drawquantumEventsDeck(g);
+					frame.repaint();
+					break;
+
+				case "./Assets/Cards/Heisenberg.png": ///////// ADD TO CURRENT PLAYERS TURN
+					break;
+
+				case "./Assets/Cards/Bennett.png"://////// ADD TO CURRENT PLAYERS TURN
+					break;
+
+				case "./Assets/Cards/QuantumTunnel.png"://////// ADD TO CURRENT PLAYERS TURN
+					break;
+
+				case "./Assets/Cards/TheMechanic.png"://////// ADD TO CURRENT PLAYERS TURN
+					break;
+
+				case "./Assets/Cards/SpookyAction.png"://////// Take 1 random token, roll 8 die, place token
+					break;
+			}
+		}
+	}
+	//
+
 	public static void placeCard() {
 		if (quantumEventsDeck.size() > 0)
 			placedDeck.add(quantumEventsDeck.remove(quantumEventsDeck.size() - 1));
@@ -74,9 +398,15 @@ public class Entanglion extends JPanel {
 		if (rand > detectionRate) {
 			ArrayList<String> currentList;
 			int[] currentPosition;
-			if(player == 1){ currentList = player0Tokens;currentPosition = player0Position;}
-			else {currentList = player1Tokens;currentPosition = player1Position;}
-			if(planetPositions.get(0)[0] == currentPosition[0]) 
+			if (player == 1) {
+				currentList = player0Tokens;
+				currentPosition = player0Position;
+			} else {
+				currentList = player1Tokens;
+				currentPosition = player1Position;
+			}
+			if (planetPositions.get(0)[0] == currentPosition[0])
+				;
 		} else {
 			detectionRate++;
 		}
